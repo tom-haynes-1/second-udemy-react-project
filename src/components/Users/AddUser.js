@@ -13,7 +13,7 @@ const AddUser = (props) => {
         event.preventDefault();
 
         if (validateInputs()) {
-            console.log(enteredUserName, enteredAge);
+            props.onAddUser(enteredUserName, enteredAge);
             clearInputs();
         }           
     };
@@ -39,42 +39,26 @@ const AddUser = (props) => {
     };
 
 return (
-    <Card 
-       className={ classes.input }
-    >
-        <form 
-           onSubmit={ addUserHandler }
-        >
-            <label 
-               htmlFor="username"
-            >
-                Username
-            </label>
-            <input
-               id="username"  
-               type="text" 
-               value={ enteredUserName } 
-               onChange={ userNameChangeHandler }
-            />
-            <label 
-               htmlFor="age"
-            >
-                Age (Years)
-            </label>
-            <input
-               id="age"  
-               type="number" 
-               value={ enteredAge } 
-               onChange={ ageChangeHandler }
-            />
-            <Button 
-               type="submit"
-            >
-                Add User
-            </Button>
-        </form>
-    </Card>
-    );
+  <Card className={classes.input}>
+    <form onSubmit={addUserHandler}>
+      <label htmlFor="username">Username</label>
+      <input
+        id="username"
+        type="text"
+        value={enteredUserName}
+        onChange={userNameChangeHandler}
+      />
+      <label htmlFor="age">Age (Years)</label>
+      <input
+        id="age"
+        type="number"
+        value={enteredAge}
+        onChange={ageChangeHandler}
+      />
+      <Button type="submit">Add User</Button>
+    </form>
+  </Card>
+);
 };
 
 export default AddUser;
