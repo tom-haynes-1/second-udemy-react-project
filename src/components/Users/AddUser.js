@@ -11,7 +11,11 @@ const AddUser = (props) => {
 
     const addUserHandler = (event) => {
         event.preventDefault();
-        console.log(enteredUserName, enteredAge);
+
+        if (validateInputs()) {
+            console.log(enteredUserName, enteredAge);
+            clearInputs();
+        }           
     };
 
     const userNameChangeHandler = (event) => {
@@ -20,6 +24,18 @@ const AddUser = (props) => {
 
     const ageChangeHandler = (event) => {
         setEnteredAge(event.target.value);
+    };
+
+    const clearInputs = () => {
+        setEnteredUserName('');
+        setEnteredAge('');
+    };
+
+    const validateInputs = () => {
+        if (enteredUserName.trim().length === 0 || enteredAge.trim().length === 0 || +enteredAge <= 0) {
+            return false;
+        }
+            return true;
     };
 
 return (
@@ -34,9 +50,10 @@ return (
             >
                 Username
             </label>
-            <input 
+            <input
+               id="username"  
                type="text" 
-               id="username" 
+               value={ enteredUserName } 
                onChange={ userNameChangeHandler }
             />
             <label 
@@ -44,9 +61,10 @@ return (
             >
                 Age (Years)
             </label>
-            <input 
+            <input
+               id="age"  
                type="number" 
-               id="age" 
+               value={ enteredAge } 
                onChange={ ageChangeHandler }
             />
             <Button 
