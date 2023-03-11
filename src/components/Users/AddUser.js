@@ -55,9 +55,9 @@ return (
         {
             error && 
             <ErrorModal 
-            errorTitle={ error.title }
-            errorMessage={ error.message }
-            onDismissError={ errorHandler }
+                errorTitle={ error.title }
+                errorMessage={ error.message }
+                onDismissError={ errorHandler }
             />
         }
         <Card className={ classes.input }>
